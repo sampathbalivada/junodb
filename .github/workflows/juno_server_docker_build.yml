@@ -18,8 +18,7 @@ jobs:
   build-juno-docker:
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     env:
       PROXY_TLS_PORT: 5080
@@ -33,10 +32,10 @@ jobs:
         run: |
           echo "Openssl Version:" `openssl version`
       - name: Set up Docker
-        # uses: docker-practice/actions-setup-docker@master
+        uses: docker-practice/actions-setup-docker@master
         # uses: crazy-max/ghaction-setup-docker@v2
         if: ${{ matrix.os == 'macos-latest' }}
-        run: |
+        run: 
           brew install docker
           colima start
           # For testcontainers to find the Colima socket
