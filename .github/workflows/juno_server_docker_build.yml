@@ -35,7 +35,7 @@ jobs:
         uses: docker-practice/actions-setup-docker@master
         # uses: crazy-max/ghaction-setup-docker@v2
         if: ${{ matrix.os == 'macos-latest' }}
-        run: 
+        run: |
           brew install docker
           colima start
           # For testcontainers to find the Colima socket
